@@ -2,7 +2,7 @@ function TestParfor()
 
 % Example of using parfor loop.
 %
-% This code generates 10 random 4000x4000 complex matrices, and then 
+% This code generates 14 random 4000x4000 complex matrices, and then 
 % performs their inversion one-by-one in a standard "for" loop, and
 % in parallel using a "parfor" loop.
 %
@@ -15,7 +15,7 @@ function TestParfor()
 %
 % Job submission commands:
 %
-%  >> cluster = parcluster('beluga');
+%  >> cluster = parcluster('beluga');  % or 'narval'
 %  >> ccSBATCH.submitTo(cluster)
 
 clear all;
@@ -28,7 +28,7 @@ fprintf(outfile, '*** TestParfor *** \n\n');
 fclose(outfile);
 
 tic;
-for k = 1:10
+for k = 1:14
     bigMatrix3D(:,:,k) = rand(N) + 1i * rand(N);
     outfile = fopen(logFile, 'a');
     fprintf(outfile, 'Serial: Doing K-point : %3i\n', k);
@@ -42,7 +42,7 @@ fprintf(outfile, 'Time serial = %12f\n\n', t2);
 fclose(outfile);
 
 tic;
-parfor k = 1:10
+parfor k = 1:14
     bigMatrix3D(:,:,k) = rand(N) + 1i * rand(N);
     outfile = fopen(logFile, 'a');
     fprintf(outfile, 'Parallel: Doing K-point : %3i\n', k);
