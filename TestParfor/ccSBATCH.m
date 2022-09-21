@@ -11,7 +11,7 @@ classdef ccSBATCH
         % Nodes, cpus per task, GPUs per node
         nodes = 1;
         ntasksPerNode = 1;  % Must stay at 1
-        cpusPerTask = 40;   % To allow speedup on entire nodes
+        cpusPerTask = 8;    % To allow speedup
         gpusPerNode = 0;
 
         % Specify the memory per CPU
@@ -44,10 +44,10 @@ classdef ccSBATCH
     methods
         function nbWorkers = getNbWorkers(obj)
             % Automatic: the (nodes * cpusPerTask - 1) rule
-            %nbWorkers = obj.nodes * obj.cpusPerTask - 1;
+            nbWorkers = obj.nodes * obj.cpusPerTask - 1;
             
-            % You may also hard-code the number of slave workers
-            nbWorkers = 5;
+            % You may also hard-code the number of workers
+            %nbWorkers = 7;
         end
 
         function submitArgs = getSubmitArgs(obj)
