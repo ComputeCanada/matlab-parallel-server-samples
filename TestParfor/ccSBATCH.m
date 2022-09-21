@@ -15,7 +15,7 @@ classdef ccSBATCH
         gpusPerNode = 0;
 
         % Specify the memory per CPU
-        memPerCPU = '2000M'
+        memPerCPU = '3840M'
 
         % Requested walltime
         walltime = '00:30:00'
